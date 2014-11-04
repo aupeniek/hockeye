@@ -15,7 +15,7 @@ request({
 			sys.debug("Error: " + err);
 		} else {
 			// soupselect happening here...
-			var body = select(dom, 'tbody');
+			var tbody = select(dom, 'tbody');
 	                sys.puts("Table body:");
 			sys.puts(tbody);
 			var rows = select(tbody, 'tr');
