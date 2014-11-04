@@ -15,9 +15,11 @@ request({
 			sys.debug("Error: " + err);
 		} else {
 			// soupselect happening here...
-			var titles = select(dom, 'tbody');
+			var body = select(dom, 'tbody');
 	                sys.puts("Table body:");
-	                titles.forEach(function(title) {
+			sys.puts(tbody);
+			var rows = select(tbody, 'tr');
+	                rows.forEach(function(title) {
 	                	sys.puts("- " + title.children[0].raw + " [" + title.attribs.align + "]\n");
 			})
 		}
