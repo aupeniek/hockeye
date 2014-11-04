@@ -7,10 +7,10 @@ var sys = require('sys');
 var request = require("request");
  
 request({
-  uri: "http://espn.go.com/nhl/statistics/team/_/stat/scoring/sort/avgShots/year/2014",
+    uri: "http://espn.go.com/nhl/statistics/team/_/stat/scoring/sort/avgShots/year/2014",
 }, function(error, response, body) {
 	//now we have the whole body, parse it and select the nodes we want...
-        var handler = new htmlparser.DefaultHandler(function(err, dom) {
+	var handler = new htmlparser.DefaultHandler(function(err, dom) {
 	        if (err) {
 			sys.debug("Error: " + err);
 		} else {
@@ -20,9 +20,8 @@ request({
 	                titles.forEach(function(title) {
 	                	sys.puts("- " + title.children[0].raw + " [" + title.attribs.align + "]\n");
 			})
-	        }
+		}
 	});
 	var parser = new htmlparser.Parser(handler);
 	parser.parseComplete(body);
-);
-}
+});
