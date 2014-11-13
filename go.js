@@ -15,15 +15,19 @@ request({
 			sys.debug("Error: " + err);
 		} else {
 			// soupselect happening here...
-			var tbody = select(dom, 'tbody');
-	                sys.puts("Table body:");
-			sys.puts(tbody);
+			var tbody = select(dom, 'table.tablehead');
+			sys.puts("Table body:" + sys.inspect(tbody));
+			
 			var rows = select(tbody, 'tr');
-	                rows.forEach(function(title) {
-	                	sys.puts("- " + title.children[0].raw + " [" + title.attribs.align + "]\n");
+			rows.forEach(function(row) {
+				sys.puts(sys.inspect(row.children[1].children[0]) + "\t");
+				//sys.puts(row.children[1].children[0].raw);
+				var team = select(row, 'a');
+				sys.puts(sys.inspect(team.children[0]) + "\t");
 			})
 		}
 	});
 	var parser = new htmlparser.Parser(handler);
 	parser.parseComplete(body);
+	//sys.puts(sys.inspect(handler.dom, false, null));
 });
